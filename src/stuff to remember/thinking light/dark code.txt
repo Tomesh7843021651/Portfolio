@@ -1,0 +1,1636 @@
+in this thinking code  now i want to add one thing like if the navbar toggle to dark or light if it is on dark keep every thing as is no chnage and if it toggles to light then  =  You are a senior UI engineer and creative director.
+
+I already have a working React + TypeScript portfolio with:
+- ThemeProvider (dark/light toggle)
+- CSS variables for theming
+- Sections like:
+  Home, Work, Thinking, Growth, Experiments, Contact
+
+Dark mode must be DEFAULT.
+Light mode must activate ONLY when toggle is ON.
+
+━━━━━━━━━━━━━━━━━━━━━━
+GLOBAL THEME SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━
+
+Update my theme system so that:
+
+
+2️⃣ LIGHT MODE (toggle ON)
+Inspired by “Country Garden” palette:
+- Background: #FBF4F6 (soft ivory blush)
+- Card background: #FFFFFF
+- Text primary: #2F2C4F (royal indigo)
+- Text secondary: #6B5E7A
+- Accent: #9B6EF3 (royal lavender)
+- Soft highlights: rose gold / muted plum
+
+Expose ALL colors as CSS variables:
+--bg-color
+--card-bg
+--text-color
+--text-muted
+--accent
+--gradient
+
+━━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY (VERY IMPORTANT)
+━━━━━━━━━━━━━━━━━━━━━━
+
+Apply rich, premium typography:
+
+- Headings:
+  font-weight: 700–800
+  letter-spacing: -0.02em
+  line-height: 1.15
+  subtle gradient text on headings using accent color
+
+- Body text:
+  font-size: 16–18px
+  line-height: 1.7
+  color: var(--text-muted)
+
+- Section titles:
+  uppercase small label + large title
+  elegant spacing above & below
+
+━━━━━━━━━━━━━━━━━━━━━
+SECTION UPDATES (APPLY TO ALL)
+━━━━━━━━━━━━━━━━━━━━━━
+
+For EACH section (Work, Growth, Experiments, Thinking, Contact):
+
+1️⃣ Wrap content inside a centered container:
+   max-width: 1100px
+   margin: 0 auto
+   padding: 6rem 1.5rem
+
+2️⃣ Section background must use:
+   background: var(--bg-color)
+
+3️⃣ Cards inside sections:
+   background: var(--card-bg)
+   border-radius: 16px
+   padding: 2rem
+   subtle shadow (stronger in light mode)
+
+4️⃣ Hover effects:
+   - Card lifts slightly (translateY)
+   - Accent glow border
+   - Smooth 0.3s transitions
+
+5️⃣ Animations:
+   - Fade + slide-up on mount
+   - Reduced motion on mobile
+
+━━━━━━━━━━━━━━━━━━━━━━
+LIGHT/DARK TOGGLE BEHAVIOR
+━━━━━━━━━━━━━━━━━━━━━━
+
+- Default load: DARK MODE
+- When toggle switches to LIGHT:
+  → All text, cards, backgrounds, gradients update
+  → No component should manually override colors
+  → Everything must rely on CSS variables
+
+━━━━━━━━━━━━━━━━━━━━━━
+MOBILE EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━
+
+- Typography scales down smoothly
+- Cards stack vertically
+- Increased spacing for touch
+- No visual clutter
+- Still premium & elegant
+
+━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT RULES
+━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Do NOT change routing
+❌ Do NOT remove existing components
+❌ Do NOT hardcode colors inside components
+✅ Use CSS variables ONLY
+✅ Code must be error-free
+✅ TypeScript compatible
+✅ Beautiful, mesmerizing at first glance
+
+Return updated:
+- theme configuration
+- example section (Work or Experiments)
+- reusable CSS patterns for other sections                the code is exactly same as above thinking page/ component       here some of them is removed for chatting purpose only else in myfile is complete one   code
+      import React, { useEffect, useRef, useState, useCallback } from "react";
+
+interface Insight {
+  id: number;
+  category: string;
+  title: string;
+  insight: string;
+  philosophy: string;
+  quote: string;
+  color: string;
+  icon: string;
+  readTime: string;
+}
+
+const insights: Insight[] = [
+  {
+
+
+const FloatingOrb: React.FC<{ color: string; delay: number; size: number }> = ({ color, delay, size }) => (
+  <div
+    className="floating-orb"
+    style={{
+      background: `radial-gradient(circle, ${color}40 0%, transparent 70%)`,
+      animationDelay: `${delay}s`,
+      width: size,
+      height: size,
+    }}
+  />
+);
+
+interface CyclingTypewriterProps {
+  texts: string[];
+  typingSpeed?: number;
+  deleteSpeed?: number;
+  pauseDuration?: number;
+  startDelay?: number;
+}
+
+const CyclingTypewriter: React.FC<CyclingTypewriterProps> = ({
+  texts,
+  typingSpeed = 50,
+  deleteSpeed = 30,
+  pauseDuration = 2000,
+  startDelay = 500,
+}) => {
+  const [displayText, setDisplayText] = useState("");
+  const [textIndex, setTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [started, setStarted] = useState(false);
+
+
+
+const Thinking: React.FC = () => {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            setVisibleCards((prev) => new Set([...prev, index]));
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+     
+          {/* <p className="thinking-subtitle">
+            <TypewriterText 
+              text="Exploring the intersection of technical mastery and human-centered wisdom." 
+              delay={500}
+            />
+          </p> */}
+
+<p className="thinking-subtitle">
+  <CyclingTypewriter
+    texts={[
+      "Exploring the intersection of technical mastery and human-centered wisdom.",
+      "Where code becomes poetry and logic meets empathy.",
+      "Building digital experiences that feel like magic.",
+      "Turning complex problems into elegant solutions.",
+      "Crafting software with soul and purpose."
+    ]}
+    typingSpeed={40}
+    deleteSpeed={25}
+    pauseDuration={2500}
+    startDelay={500}
+  />
+</p>
+
+        
+
+         {/* Title */}
+            
+        </div>
+      </div>
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300  ;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        .thinking-section {
+          width: 100%;
+          min-height: 100vh;
+          background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+          padding: 5rem 1.5rem;
+          position: relative;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /* Ambient Background */
+        .ambient-mesh {
+          position: absolute;
+          inset: 0;
+          background: 
+            radial-gradient(ellipse at 20% 30%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, rgba(248, 181, 0, 0.05) 0%, transparent 70%);
+          filter: blur(60px);
+          animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -30px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+       .noise-overlay {
+          position: absolute;
+          inset: 0;
+          opacity: 0.03;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg  '%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+          pointer-events: none;
+        }
+
+        /* Floating Orbs */
+        .orbs-container {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          overflow: hidden;
+        }
+
+        .floating-orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(40px);
+          animation: orbFloat 15s ease-in-out infinite;
+          opacity: 0.6;
+        }
+
+        @keyframes orbFloat {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          25% { transform: translate(50px, -30px) scale(1.1); }
+          50% { transform: translate(-30px, 50px) scale(0.9); }
+          75% { transform: translate(20px, 20px) scale(1.05); }
+        }
+        /* Container */
+        .thinking-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* Header */
+        .thinking-header {
+          text-align: center;
+          margin-bottom: 5rem;
+          position: relative;
+        }
+
+        .header-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.625rem 1.25rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 9999px;
+          margin-bottom: 2rem;
+          backdrop-filter: blur(10px);
+          animation: badgeFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes badgeFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+
+        .badge-icon {
+          font-size: 1.25rem;
+        }
+
+        .header-badge span:last-child {
+          color: rgba(251, 234, 235, 0.9);
+          font-size: 0.875rem;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+        }
+
+        .thinking-title {
+          font-size: clamp(2.5rem, 6vw, 4rem);
+          font-weight: 800;
+          line-height: 1.1;
+          margin: 0 0 1.5rem 0;
+          color: #FBEAEB;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .title-word {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: wordReveal 0.6s ease forwards;
+        }
+
+        .title-word:nth-child(1) { animation-delay: 0.1s; }
+        .title-word:nth-child(2) { animation-delay: 0.2s; }
+        .title-word:nth-child(3) { animation-delay: 0.3s; }
+        .title-word:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes wordReveal {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .highlight {
+          background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .highlight-alt {
+          background: linear-gradient(135deg, #4ECDC4 0%, #F8B500 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .thinking-subtitle {
+          font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+          color: rgba(251, 234, 235, 0.7);
+          max-width: 600px;
+          margin: 0 auto 3rem;
+          line-height: 1.6;
+          font-weight: 300;
+        }
+
+        .cursor {
+          display: inline-block;
+          color: #4ECDC4;
+          animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+          0%, 50% { opacity: 1; }
+          51%, 100% { opacity: 0; }
+        }
+        .cursor {
+          display: inline-block;
+          color: #4ECDC4;
+          font-weight: 300;
+          margin-left: 2px;
+        }
+        
+        .cursor.blink {
+          animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+          0%, 50% { opacity: 1; }
+          51%, 100% { opacity: 0; }
+        }
+        
+        .cycling-typewriter {
+          display: inline;
+        }
+
+        /* Philosophy Dialog */
+        .philosophy-dialog {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          max-width: 700px;
+          margin: 0 auto;
+          text-align: left;
+        }
+
+        .dialog-avatar {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, #917FB3 0%, #4ECDC4 100%);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.75rem;
+          flex-shrink: 0;
+          animation: avatarPulse 2s ease-in-out infinite;
+          box-shadow: 0 0 30px rgba(145, 127, 179, 0.4);
+        }
+
+        @keyframes avatarPulse {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(145, 127, 179, 0.4); }
+          50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(145, 127, 179, 0.6); }
+        }
+
+        .dialog-bubble {
+          flex: 1;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
+          padding: 1.5rem;
+          position: relative;
+          backdrop-filter: blur(20px);
+        }
+
+        .dialog-bubble p {
+          margin: 0;
+          color: rgba(251, 234, 235, 0.9);
+          font-size: 1rem;
+          line-height: 1.7;
+          font-style: italic;
+        }
+
+        .dialog-decoration {
+          position: absolute;
+          bottom: -10px;
+          left: 30px;
+          width: 20px;
+          height: 20px;
+          background: rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          border-right: 1px solid rgba(255, 255, 255, 0.1);
+          transform: rotate(45deg);
+        }
+
+        /* Insights Grid */
+        .insights-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          margin-bottom: 5rem;
+        }
+
+        /* Insight Cards */
+        .insight-card {
+          position: relative;
+          opacity: 0;
+          transform: translateY(40px) rotateX(5deg);
+          transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+          cursor: pointer;
+          perspective: 1000px;
+        }
+
+        .insight-card.visible {
+          opacity: 1;
+          transform: translateY(0) rotateX(0);
+        }
+
+        .insight-card.hovered {
+          transform: translateY(-8px) scale(1.02);
+        }
+
+        .card-glow {
+          position: absolute;
+          inset: -2px;
+          border-radius: 24px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          filter: blur(20px);
+          pointer-events: none;
+        }
+
+        .insight-card.hovered .card-glow {
+          opacity: 1;
+        }
+
+        .card-inner {
+          position: relative;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px;
+          padding: 2rem;
+          overflow: hidden;
+          backdrop-filter: blur(20px);
+          transition: all 0.3s ease;
+        }
+
+       .insight-card.hovered .card-inner {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-shine {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            105deg,
+            transparent 40%,
+            rgba(255, 255, 255, 0.05) 45%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 55%,
+            transparent 60%
+          );
+          transform: translateX(-100%);
+          transition: transform 0.6s ease;
+        }
+
+        .insight-card.hovered .card-shine {
+          transform: translateX(100%);
+        }
+
+        /* Card Header */
+        .insight-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1.25rem;
+        }
+
+        .insight-icon {
+          font-size: 2.5rem;
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+          animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-8px) rotate(5deg); }
+        }
+
+        .insight-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .insight-category {
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--insight-color);
+        }
+
+        .read-time {
+          font-size: 0.8125rem;
+          color: rgba(251, 234, 235, 0.5);
+        }
+
+        /* Card Content */
+        .insight-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #FBEAEB;
+          margin: 0 0 1rem 0;
+          line-height: 1.3;
+          transition: color 0.3s ease;
+        }
+
+        .insight-card.hovered .insight-title {
+          color: var(--insight-color);
+        }
+
+        .insight-lead {
+          font-size: 1.0625rem;
+          line-height: 1.7;
+          color: rgba(251, 234, 235, 0.85);
+          margin: 0;
+          font-weight: 500;
+        }
+
+        /* Expandable Content */
+        .philosophy-content {
+          max-height: 0;
+          overflow: hidden;
+          opacity: 0;
+          transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .insight-card.expanded .philosophy-content {
+          max-height: 600px;
+          opacity: 1;
+          margin-top: 1.5rem;
+        }
+
+        .philosophy-divider {
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--insight-color), transparent);
+          margin-bottom: 1.5rem;
+          opacity: 0.5;
+        }
+
+        .philosophy-text {
+          font-size: 0.9375rem;
+          line-height: 1.8;
+          color: rgba(251, 234, 235, 0.75);
+          margin: 0 0 1.5rem 0;
+        }
+
+        /* Quote Block */
+        .insight-quote {
+          position: relative;
+          margin: 0;
+          padding: 1.5rem;
+          background: rgba(var(--insight-color), 0.05);
+          border-left: 3px solid var(--insight-color);
+          border-radius: 0 12px 12px 0;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.125rem;
+          font-style: italic;
+          color: rgba(251, 234, 235, 0.9);
+          line-height: 1.6;
+        }
+
+        .quote-mark {
+          color: var(--insight-color);
+          font-size: 1.5rem;
+          line-height: 0;
+          vertical-align: middle;
+        }
+
+        /* Card Footer */
+        .card-footer {
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .read-more-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          color: rgba(251, 234, 235, 0.8);
+          font-size: 0.9375rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: var(--insight-color);
+          color: var(--insight-color);
+        }
+
+        .read-more-btn svg {
+          transition: transform 0.3s ease;
+        }
+
+        .read-more-btn svg.rotated {
+          transform: rotate(180deg);
+        }
+
+        /* Corner Accents */
+        .corner-accent {
+          position: absolute;
+          width: 40px;
+          height: 40px;
+          border: 2px solid var(--insight-color);
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+
+        .corner-accent.top-left {
+          top: 10px;
+          left: 10px;
+          border-right: none;
+          border-bottom: none;
+          border-radius: 12px 0 0 0;
+        }
+
+        .corner-accent.bottom-right {
+          bottom: 10px;
+          right: 10px;
+          border-left: none;
+          border-top: none;
+          border-radius: 0 0 12px 0;
+        }
+
+        .insight-card.hovered .corner-accent {
+          opacity: 0.5;
+          width: 60px;
+          height: 60px;
+        }
+
+        /* CTA Section */
+        .thinking-cta {
+          position: relative;
+          text-align: center;
+          padding: 4rem 2rem;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 24px;
+          overflow: hidden;
+        }
+
+        .cta-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          animation: ctaIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes ctaIconFloat {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-10px) scale(1.1); }
+        }
+
+        .cta-title {
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 800;
+          color: #FBEAEB;
+          margin: 0 0 1rem 0;
+        }
+
+        .cta-text {
+          font-size: 1.125rem;
+          color: rgba(251, 234, 235, 0.75);
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.7;
+        }
+
+        .text-glow {
+          color: #FFEAA7;
+          text-shadow: 0 0 20px rgba(255, 234, 167, 0.3);
+        }
+
+        .cta-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+        }
+
+        .cta-button {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem 2.5rem;
+          border-radius: 16px;
+          font-size: 1rem;
+          font-weight: 700;
+          text-decoration: none;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+          background: linear-gradient(135deg, #917FB3 0%, #4ECDC4 100%);
+          color: white;
+          box-shadow: 0 10px 40px -10px rgba(145, 127, 179, 0.5);
+        }
+
+        .cta-button.primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 20px 60px -10px rgba(145, 127, 179, 0.6);
+        }
+
+        .button-ripple {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .cta-button.primary:hover .button-ripple {
+          opacity: 1;
+        }
+
+        .cta-button.secondary {
+          background: transparent;
+          color: rgba(251, 234, 235, 0.8);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+          border-color: #917FB3;
+          color: #917FB3;
+          background: rgba(145, 127, 179, 0.1);
+        }
+
+        /* Wisdom Toast */
+        .wisdom-toast {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1rem 1.25rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          backdrop-filter: blur(10px);
+          animation: toastSlide 1s ease-out;
+          max-width: 280px;
+        }
+
+        @keyframes toastSlide {
+          from {
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .toast-icon {
+          font-size: 1.5rem;
+          animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+          0%, 100% { transform: scale(1) rotate(0deg); }
+          50% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        .wisdom-toast p {
+          margin: 0;
+          font-size: 0.8125rem;
+          color: rgba(251, 234, 235, 0.8);
+          font-style: italic;
+          line-height: 1.5;
+          text-align: left;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+          .thinking-section {
+            padding: 6rem 3rem;
+          }
+
+          .insights-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+          }
+
+          .cta-actions {
+            flex-direction: row;
+            justify-content: center;
+          }
+
+          .philosophy-dialog {
+            gap: 1.5rem;
+          }
+
+          .dialog-avatar {
+            width: 70px;
+            height: 70px;
+            font-size: 2rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .insights-grid {
+            gap: 3rem;
+          }
+
+          .card-inner {
+            padding: 2.5rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .philosophy-dialog {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+
+          .dialog-bubble {
+            text-align: center;
+          }
+
+          .dialog-decoration {
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+          }
+
+          .wisdom-toast {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            margin-top: 2rem;
+            max-width: 100%;
+          }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+export default Thinking;   dont change the code or can add css  main is do not change the working code  tell me where to make changes in detail
+Edit
+Copy
+Share
+I'll show you exactly where to make changes to add light theme support while keeping your dark theme as default. You only need to modify the CSS by adding light theme variables and updating color references.
+Changes to Make in Your Thinking.tsx
+Step 1: Add Theme Variables at the TOP of your style tag
+Find this line:
+css
+Copy
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+Replace with this (add the CSS variables right after import):
+css
+Copy
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+  /* ============================================
+     THEME VARIABLES - ADD THIS ENTIRE BLOCK
+     ============================================ */
+  
+  /* DARK MODE (Default) - Your existing colors */
+  :root, [data-theme="dark"] {
+    /* Backgrounds */
+    --thinking-bg: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --thinking-bg-solid: #1a1a2e;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-bg-hover: rgba(255, 255, 255, 0.06);
+    
+    /* Text colors */
+    --text-primary: #FBEAEB;
+    --text-secondary: rgba(251, 234, 235, 0.85);
+    --text-muted: rgba(251, 234, 235, 0.7);
+    --text-subtle: rgba(251, 234, 235, 0.5);
+    --text-faint: rgba(251, 234, 235, 0.4);
+    
+    /* Borders */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.08);
+    --border-heavy: rgba(255, 255, 255, 0.15);
+    
+    /* Accents (keep your existing card colors) */
+    --accent-glow: rgba(145, 127, 179, 0.4);
+    --shine-effect: rgba(255, 255, 255, 0.1);
+    
+    /* Shadows */
+    --card-shadow: none;
+    --hover-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+    
+    /* Special elements */
+    --quote-bg: rgba(var(--insight-color), 0.05);
+    --dialog-bg: rgba(255, 255, 255, 0.05);
+    --cta-bg: rgba(255, 255, 255, 0.02);
+  }
+
+  /* LIGHT MODE - "Country Garden" palette */
+  [data-theme="light"] {
+    /* Backgrounds */
+    --thinking-bg: #FBF4F6;
+    --thinking-bg-solid: #FBF4F6;
+    --card-bg: #FFFFFF;
+    --card-bg-hover: #FFFFFF;
+    
+    /* Text colors */
+    --text-primary: #2F2C4F;
+    --text-secondary: #4A4668;
+    --text-muted: #6B5E7A;
+    --text-subtle: #9B8AA8;
+    --text-faint: #B8A9C4;
+    
+    /* Borders */
+    --border-light: rgba(155, 110, 243, 0.15);
+    --border-medium: rgba(155, 110, 243, 0.1);
+    --border-heavy: rgba(155, 110, 243, 0.25);
+    
+    /* Accents */
+    --accent-glow: rgba(155, 110, 243, 0.3);
+    --shine-effect: rgba(155, 110, 243, 0.08);
+    
+    /* Shadows */
+    --card-shadow: 0 4px 20px -5px rgba(47, 44, 79, 0.1);
+    --hover-shadow: 0 20px 40px -10px rgba(47, 44, 79, 0.15);
+    
+    /* Special elements */
+    --quote-bg: rgba(155, 110, 243, 0.08);
+    --dialog-bg: rgba(255, 255, 255, 0.8);
+    --cta-bg: rgba(155, 110, 243, 0.05);
+  }
+Step 2: Update .thinking-section
+Find:
+css
+Copy
+.thinking-section {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+Replace with:
+css
+Copy
+.thinking-section {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--thinking-bg);
+  padding: 6rem 1.5rem; /* Increased padding */
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background 0.5s ease;
+}
+
+/* Light mode solid background fallback */
+[data-theme="light"] .thinking-section {
+  background: var(--thinking-bg-solid);
+}
+Step 3: Update .thinking-container
+Find:
+css
+Copy
+.thinking-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+Replace with:
+css
+Copy
+.thinking-container {
+  max-width: 1100px; /* Changed from 1000px */
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+Step 4: Update .thinking-title
+Find:
+css
+Copy
+.thinking-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  color: #FBEAEB;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+Replace with:
+css
+Copy
+.thinking-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em; /* Added */
+  line-height: 1.15; /* Changed from 1.1 */
+  margin: 0 0 1.5rem 0;
+  color: var(--text-primary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+Step 5: Update .thinking-subtitle
+Find:
+css
+Copy
+.thinking-subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: rgba(251, 234, 235, 0.7);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+Replace with:
+css
+Copy
+.thinking-subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.7; /* Changed from 1.6 */
+  font-weight: 400; /* Changed from 300 */
+  transition: color 0.3s ease;
+}
+Step 6: Update .header-badge
+Find:
+css
+Copy
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+Replace with:
+css
+Copy
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--dialog-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  animation: badgeFloat 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .header-badge {
+  box-shadow: 0 2px 10px -3px rgba(155, 110, 243, 0.15);
+}
+Step 7: Update .header-badge text color
+Find:
+css
+Copy
+.header-badge span:last-child {
+  color: rgba(251, 234, 235, 0.9);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+Replace with:
+css
+Copy
+.header-badge span:last-child {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600; /* Changed from 500 */
+  letter-spacing: 0.05em; /* Changed from 0.02em */
+  text-transform: uppercase; /* Added */
+  transition: color 0.3s ease;
+}
+Step 8: Update .dialog-avatar
+Find:
+css
+Copy
+.dialog-avatar {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #917FB3 0%, #4ECDC4 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  animation: avatarPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(145, 127, 179, 0.4);
+}
+Replace with:
+css
+Copy
+.dialog-avatar {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #9B6EF3 0%, #C8A8F0 100%); /* Updated to lavender */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  animation: avatarPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 30px var(--accent-glow);
+  transition: box-shadow 0.3s ease;
+}
+Step 9: Update .dialog-bubble
+Find:
+css
+Copy
+.dialog-bubble {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+Replace with:
+css
+Copy
+.dialog-bubble {
+  flex: 1;
+  background: var(--dialog-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 1.5rem;
+  position: relative;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .dialog-bubble {
+  box-shadow: 0 4px 20px -5px rgba(47, 44, 79, 0.08);
+}
+Step 10: Update .dialog-bubble p
+Find:
+css
+Copy
+.dialog-bubble p {
+  margin: 0;
+  color: rgba(251, 234, 235, 0.9);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+Replace with:
+css
+Copy
+.dialog-bubble p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+Step 11: Update .card-inner
+Find:
+css
+Copy
+.card-inner {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+Replace with:
+css
+Copy
+.card-inner {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-medium);
+  border-radius: 16px; /* Changed from 20px */
+  padding: 2rem;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
+}
+Step 12: Update .insight-card.hovered .card-inner
+Find:
+css
+Copy
+.insight-card.hovered .card-inner {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+Replace with:
+css
+Copy
+.insight-card.hovered .card-inner {
+  background: var(--card-bg-hover);
+  border-color: var(--border-heavy);
+  box-shadow: var(--hover-shadow);
+  transform: translateY(-5px); /* Added lift effect */
+}
+Step 13: Update .insight-title
+Find:
+css
+Copy
+.insight-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FBEAEB;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+Replace with:
+css
+Copy
+.insight-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+Step 14: Update .insight-lead
+Find:
+css
+Copy
+.insight-lead {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(251, 234, 235, 0.85);
+  margin: 0;
+  font-weight: 500;
+}
+Replace with:
+css
+Copy
+.insight-lead {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400; /* Changed from 500 */
+  transition: color 0.3s ease;
+}
+Step 15: Update .philosophy-text
+Find:
+css
+Copy
+.philosophy-text {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgba(251, 234, 235, 0.75);
+  margin: 0 0 1.5rem 0;
+}
+Replace with:
+css
+Copy
+.philosophy-text {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem 0;
+  transition: color 0.3s ease;
+}
+Step 16: Update .insight-quote
+Find:
+css
+Copy
+.insight-quote {
+  position: relative;
+  margin: 0;
+  padding: 1.5rem;
+  background: rgba(var(--insight-color), 0.05);
+  border-left: 3px solid var(--insight-color);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: rgba(251, 234, 235, 0.9);
+  line-height: 1.6;
+}
+Replace with:
+css
+Copy
+.insight-quote {
+  position: relative;
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--quote-bg);
+  border-left: 3px solid var(--insight-color);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+Step 17: Update .read-more-btn
+Find:
+css
+Copy
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: rgba(251, 234, 235, 0.8);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+Replace with:
+css
+Copy
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+Step 18: Update .thinking-cta
+Find:
+css
+Copy
+.thinking-cta {
+  position: relative;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+}
+Replace with:
+css
+Copy
+.thinking-cta {
+  position: relative;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--cta-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .thinking-cta {
+  box-shadow: 0 4px 30px -10px rgba(47, 44, 79, 0.1);
+}
+Step 19: Update .cta-title
+Find:
+css
+Copy
+.cta-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #FBEAEB;
+  margin: 0 0 1rem 0;
+}
+Replace with:
+css
+Copy
+.cta-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  transition: color 0.3s ease;
+}
+Step 20: Update .cta-text
+Find:
+css
+Copy
+.cta-text {
+  font-size: 1.125rem;
+  color: rgba(251, 234, 235, 0.75);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+Replace with:
+css
+Copy
+.cta-text {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+Step 21: Update .wisdom-toast
+Find:
+css
+Copy
+.wisdom-toast {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  animation: toastSlide 1s ease-out;
+  max-width: 280px;
+}
+Replace with:
+css
+Copy
+.wisdom-toast {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  animation: toastSlide 1s ease-out;
+  max-width: 280px;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .wisdom-toast {
+  box-shadow: 0 4px 20px -5px rgba(47, 44, 79, 0.1);
+}
+Step 22: Update .wisdom-toast p
+Find:
+css
+Copy
+.wisdom-toast p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgba(251, 234, 235, 0.8);
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+}
+Replace with:
+css
+Copy
+.wisdom-toast p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+Step 23: Update ambient mesh for light mode (add at end of style tag)
+Add this at the very end of your CSS, before the closing }:
+css
+Copy
+/* Light mode specific adjustments */
+[data-theme="light"] .ambient-mesh {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(155, 110, 243, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(200, 168, 240, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(251, 244, 246, 0.5) 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+[data-theme="light"] .noise-overlay {
+  opacity: 0.02;
+}
+
+[data-theme="light"] .floating-orb {
+  opacity: 0.4;
+}
+
+/* Smooth transitions for all theme changes */
+[data-theme="light"] *,
+[data-theme="dark"] * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+Summary of Changes
+Table
+Copy
+Element	What Changed
+Root	Added CSS variables for both themes
+Section bg	var(--thinking-bg) with solid fallback
+Container	max-width: 1100px
+All text	Uses var(--text-primary/muted/secondary)
+All cards	Uses var(--card-bg) with shadows
+All borders	Uses var(--border-light/medium/heavy)
+Padding	Increased to 6rem 1.5rem
+Transitions	Added 0.3s ease to all theme properties
+Your dark theme stays exactly as is (default), and light theme activates only when data-theme="light" is set on the document root by your navbar toggle!
