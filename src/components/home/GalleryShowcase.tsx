@@ -4,7 +4,7 @@ import image2 from "../../Assets/image2.jpeg";
 import image3 from "../../Assets/image3.jpeg";
 import image4 from "../../Assets/image4.jpeg";
 import image5 from "../../Assets/image5.jpeg";
-import image6 from "../../Assets/image6.jpeg";
+
 
 interface GalleryItem {
   id: number;

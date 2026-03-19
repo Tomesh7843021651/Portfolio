@@ -126,10 +126,10 @@ const getValidUrl = (url: string, fallback: string = "#"): string => {
 // ============================================
 // SECURITY: EMAIL VALIDATION
 // ============================================
-const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email) && email.length <= 254;
-};
+// const isValidEmail = (email: string): boolean => {
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return emailRegex.test(email) && email.length <= 254;
+// };
 
 // ============================================
 // COMPONENTS

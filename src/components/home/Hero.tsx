@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import profileImage from "../../Assets/Gemini_Generated_Image_y6weljy6weljy6we.png";
-import { NavLink, useLocation } from "react-router-dom";
-import Work from "../../pages/Work";
-import Contact from "../../pages/Contact";
+
 
 
 

@@ -88,6 +88,7 @@ const FloatingParticle: React.FC<{ delay: number; color: string }> = ({ delay, c
       animationDelay: `${delay}s`,
       background: color,
     }}
+
   />
 );
 
@@ -147,11 +148,14 @@ const Work: React.FC = () => {
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    
     
     setMousePosition({ x, y });
     card.style.setProperty("--mouse-x", `${x}%`);
     card.style.setProperty("--mouse-y", `${y}%`);
   }, []);
+  
 
   const handleCardClick = (index: number) => {
     setActiveCard(activeCard === index ? null : index);
@@ -302,6 +306,18 @@ const Work: React.FC = () => {
               </a>
             </div>
           </div>
+          
+          {/*  */}
+          <div
+  className="cursor-dot"
+  style={{
+    left: `${mousePosition.x}%`,
+    top: `${mousePosition.y}%`,
+  }}
+/>
+          
+
+          {/*  */}
           
           {/* Floating Dialog */}
           <div className="floating-dialog">

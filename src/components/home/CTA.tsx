@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Contact from "../../pages/Contact";
+
 
 
 interface CTAButton {
